@@ -43,6 +43,8 @@ jobs:
 
       - name: Show metrics
         run: uv run dvc metrics show
+      - name: Smoke test the API
+        run: uv run python -m src.check_api
 
       - name: Upload model, metrics and MLflow run
         uses: actions/upload-artifact@v4
@@ -54,3 +56,5 @@ jobs:
             mlflow.db
             mlruns/
           if-no-files-found: warn
+     
+      
